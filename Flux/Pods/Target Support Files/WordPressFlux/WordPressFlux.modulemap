@@ -1,0 +1,6 @@
+framework module WordPressFlux {
+  umbrella header "WordPressFlux-umbrella.h"
+
+  export *
+  module * { export * }
+}
