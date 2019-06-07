@@ -1,0 +1,20 @@
+{
+	"menus": [
+		{
+			"type": "classic",
+			"title": "Classic Pizzas"
+		},
+		{
+			"type": "white",
+			"title": "White Pizzas"
+		},
+		{
+			"type": "light",
+			"title": "Light Pizzas"
+		},
+		{
+			"type": "special",
+			"title": "Special Pizzas"
+		}
+	]
+}
