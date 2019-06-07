@@ -12,6 +12,8 @@
 		9A818DE422A2A5EC00E88290 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A818DE222A2A5EC00E88290 /* Main.storyboard */; };
 		9A818DE622A2A5ED00E88290 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A818DE522A2A5ED00E88290 /* Assets.xcassets */; };
 		9A818DE922A2A5ED00E88290 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A818DE722A2A5ED00E88290 /* LaunchScreen.storyboard */; };
+		9AADCA4622AB256900EAFADB /* Pizzeria.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AADCA4522AB256900EAFADB /* Pizzeria.swift */; };
+		9AADCA4922AB278A00EAFADB /* PizzeriaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AADCA4822AB278A00EAFADB /* PizzeriaService.swift */; };
 		F10FB9B38AB8CDC280F17281 /* Pods_Flux.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAC35EA5C5BF74960FAF4C79 /* Pods_Flux.framework */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +25,8 @@
 		9A818DE522A2A5ED00E88290 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9A818DE822A2A5ED00E88290 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9A818DEA22A2A5ED00E88290 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9AADCA4522AB256900EAFADB /* Pizzeria.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pizzeria.swift; sourceTree = "<group>"; };
+		9AADCA4822AB278A00EAFADB /* PizzeriaService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzeriaService.swift; sourceTree = "<group>"; };
 		B18B525F83D7BA7ECB319EF0 /* Pods-Flux.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Flux.debug.xcconfig"; path = "Target Support Files/Pods-Flux/Pods-Flux.debug.xcconfig"; sourceTree = "<group>"; };
 		E0F1B424CBA5E96B49861351 /* Pods-Flux.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Flux.release.xcconfig"; path = "Target Support Files/Pods-Flux/Pods-Flux.release.xcconfig"; sourceTree = "<group>"; };
 		EAC35EA5C5BF74960FAF4C79 /* Pods_Flux.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Flux.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -54,7 +58,6 @@
 				B18B525F83D7BA7ECB319EF0 /* Pods-Flux.debug.xcconfig */,
 				E0F1B424CBA5E96B49861351 /* Pods-Flux.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -81,12 +84,38 @@
 			children = (
 				9A818DDE22A2A5EC00E88290 /* AppDelegate.swift */,
 				9A818DE022A2A5EC00E88290 /* ViewController.swift */,
+				9AADCA4722AB265700EAFADB /* Service */,
+				9AADCA4422AB254700EAFADB /* ViewControllers */,
+				9AADCA4322AB253F00EAFADB /* Models */,
 				9A818DE222A2A5EC00E88290 /* Main.storyboard */,
 				9A818DE522A2A5ED00E88290 /* Assets.xcassets */,
 				9A818DE722A2A5ED00E88290 /* LaunchScreen.storyboard */,
 				9A818DEA22A2A5ED00E88290 /* Info.plist */,
 			);
 			path = Flux;
+			sourceTree = "<group>";
+		};
+		9AADCA4322AB253F00EAFADB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9AADCA4522AB256900EAFADB /* Pizzeria.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		9AADCA4422AB254700EAFADB /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		9AADCA4722AB265700EAFADB /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				9AADCA4822AB278A00EAFADB /* PizzeriaService.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,8 +238,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9AADCA4622AB256900EAFADB /* Pizzeria.swift in Sources */,
 				9A818DE122A2A5EC00E88290 /* ViewController.swift in Sources */,
 				9A818DDF22A2A5EC00E88290 /* AppDelegate.swift in Sources */,
+				9AADCA4922AB278A00EAFADB /* PizzeriaService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
