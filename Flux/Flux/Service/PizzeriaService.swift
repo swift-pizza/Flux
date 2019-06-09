@@ -21,8 +21,14 @@ enum ServiceError: Error {
 }
 
 class PizzeriaService {
-    private let baseURLString = "http://bogodaniele.com/pizza-swift/01/"
+    typealias PizzeriaServiceCompletion<T: Decodable> = (Result<T, ServiceError>) -> Void
 
+    enum Environment {
+        case local
+        case production(String)
+    }
+
+    private let environment: Environment
     private lazy var session: URLSession = {
         let configuration = URLSessionConfiguration.default
         configuration.requestCachePolicy = .reloadIgnoringLocalCacheData
@@ -30,66 +36,52 @@ class PizzeriaService {
         return URLSession(configuration: configuration)
     }()
     
-    func execute(_ request: Request, _ completion: @escaping (Result<Pizzeria, ServiceError>) -> Void) {
-        let fullURL = baseURLString + request.jsonName
-        guard let url = URL(string: fullURL) else {
+    init(_ environment: Environment = .local) {
+        self.environment = environment
+    }
+
+    func execute<T: Codable>(_ request: Request, _ completion: @escaping PizzeriaServiceCompletion<T>) {
+        switch environment {
+        case .local:
+            execute(request, completion: completion)
+        case .production(let baseURL):
+            execute((request: request, baseURLString: baseURL), completion)
+        }
+    }
+}
+
+private extension PizzeriaService {
+    func execute<T: Codable>(_ remote:(request: Request, baseURLString: String), _ completion: @escaping PizzeriaServiceCompletion<T>) {
+        let fullURLString = remote.baseURLString + remote.request.jsonName
+        guard let url = URL(string: fullURLString) else {
             completion(.failure(ServiceError.general))
             return
         }
         
         let task = session.dataTask(request: URLRequest(url: url), completionHandler: { (data, urlResponse, error) in
-            if let error = error {
-                completion(.failure(.custom(title: "Task Error", description: error.localizedDescription, code: 0)))
-            } else if let data = data {
-                let resultData: Result<Data, ServiceError> = .success(data)
-                Parser.parse(with: resultData) { (result: Result<Pizzeria, ServiceError>) in
+            if let data = data {
+                Parser.parse(with: data) { (result: Result<T, ServiceError>) in
                     completion(result)
                 }
+            } else {
+                completion(.failure(.custom(title: "Task Error", description: error?.localizedDescription ?? "no description", code: 0)))
             }
         })
         task.resume()
     }
-}
-
-protocol URLSessionProtocol {
-    func dataTask(request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask
-}
-
-
-extension URLSession: URLSessionProtocol {
-    func dataTask(request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
-        #if DEBUG
-        print("----------")
-        print("Requesting (\(request.httpMethod ?? "??"))", request.url?.absoluteString ?? "no url", separator: " ")
-        
-        if let headers = request.allHTTPHeaderFields {
-            print("Request headers:")
-            print(headers.map { "\($0) : \($1)" }.joined(separator: "\n"))
-        }
-        print("----------")
-        #endif
-        
-        return self.dataTask(with: request, completionHandler: completionHandler)
-    }
-}
-
-final class Parser {
-    typealias ParserCompletion<T: Decodable> = (Result<T, ServiceError>) -> Void
-
-    static func parse<T: Decodable>(with data: Result<Data, ServiceError>, completion: ParserCompletion<T>) {
-        switch data {
-        case .failure(let error):
-            completion(.failure(error))
-
-        case .success(let data):
-            let decoder = JSONDecoder()
-
-            do {
-                let parsedData = try decoder.decode(T.self, from: data)
-                completion(.success(parsedData))
-            } catch {
-                completion(.failure(.custom(title: "Mapping Model Error", description: error.localizedDescription, code: 0)))
+    
+    func execute<T: Codable>(_ request: Request, completion: @escaping PizzeriaServiceCompletion<T>) {
+        do {
+            if let file = Bundle.main.url(forResource: request.jsonName, withExtension: "") {
+                let data = try Data(contentsOf: file)
+                Parser.parse(with: data) { (result: Result<T, ServiceError>) in
+                    completion(result)
+                }
+            } else {
+                completion(.failure(.custom(title: "Error", description: "Mapping error", code: 0)))
             }
+        } catch {
+            completion(.failure(.custom(title: "Error", description: error.localizedDescription, code: 0)))
         }
     }
 }

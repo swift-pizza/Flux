@@ -16,6 +16,8 @@
 		9AADCA4922AB278A00EAFADB /* PizzeriaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AADCA4822AB278A00EAFADB /* PizzeriaService.swift */; };
 		9AFF784322AC85930001E607 /* InfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AFF784222AC85930001E607 /* InfoTableViewController.swift */; };
 		9AFF784722AC86210001E607 /* pizzeria_menus.json in Resources */ = {isa = PBXBuildFile; fileRef = 9AFF784622AC86210001E607 /* pizzeria_menus.json */; };
+		9AFF784922AC8D610001E607 /* URLSession+Wrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AFF784822AC8D610001E607 /* URLSession+Wrap.swift */; };
+		9AFF784B22AC8D780001E607 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AFF784A22AC8D780001E607 /* Parser.swift */; };
 		F10FB9B38AB8CDC280F17281 /* Pods_Flux.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAC35EA5C5BF74960FAF4C79 /* Pods_Flux.framework */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +33,8 @@
 		9AADCA4822AB278A00EAFADB /* PizzeriaService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzeriaService.swift; sourceTree = "<group>"; };
 		9AFF784222AC85930001E607 /* InfoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewController.swift; sourceTree = "<group>"; };
 		9AFF784622AC86210001E607 /* pizzeria_menus.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pizzeria_menus.json; sourceTree = "<group>"; };
+		9AFF784822AC8D610001E607 /* URLSession+Wrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+Wrap.swift"; sourceTree = "<group>"; };
+		9AFF784A22AC8D780001E607 /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		B18B525F83D7BA7ECB319EF0 /* Pods-Flux.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Flux.debug.xcconfig"; path = "Target Support Files/Pods-Flux/Pods-Flux.debug.xcconfig"; sourceTree = "<group>"; };
 		E0F1B424CBA5E96B49861351 /* Pods-Flux.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Flux.release.xcconfig"; path = "Target Support Files/Pods-Flux/Pods-Flux.release.xcconfig"; sourceTree = "<group>"; };
 		EAC35EA5C5BF74960FAF4C79 /* Pods_Flux.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Flux.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -118,6 +122,8 @@
 			isa = PBXGroup;
 			children = (
 				9AADCA4822AB278A00EAFADB /* PizzeriaService.swift */,
+				9AFF784822AC8D610001E607 /* URLSession+Wrap.swift */,
+				9AFF784A22AC8D780001E607 /* Parser.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -261,11 +267,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9AFF784922AC8D610001E607 /* URLSession+Wrap.swift in Sources */,
 				9AADCA4622AB256900EAFADB /* Pizzeria.swift in Sources */,
 				9AFF784322AC85930001E607 /* InfoTableViewController.swift in Sources */,
 				9A818DE122A2A5EC00E88290 /* MenusViewController.swift in Sources */,
 				9A818DDF22A2A5EC00E88290 /* AppDelegate.swift in Sources */,
 				9AADCA4922AB278A00EAFADB /* PizzeriaService.swift in Sources */,
+				9AFF784B22AC8D780001E607 /* Parser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

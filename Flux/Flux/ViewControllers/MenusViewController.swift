@@ -11,7 +11,7 @@ class MenusViewController: UITableViewController {
         super.viewDidAppear(animated)
 
         let service = PizzeriaService()
-        service.execute(.menus) { result in
+        service.execute(.menus) { (result: Result<Pizzeria, ServiceError>) in
             switch result {
             case .failure(let error):
                 print(error)
