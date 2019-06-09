@@ -18,6 +18,11 @@
 		9AFF784722AC86210001E607 /* pizzeria_menus.json in Resources */ = {isa = PBXBuildFile; fileRef = 9AFF784622AC86210001E607 /* pizzeria_menus.json */; };
 		9AFF784922AC8D610001E607 /* URLSession+Wrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AFF784822AC8D610001E607 /* URLSession+Wrap.swift */; };
 		9AFF784B22AC8D780001E607 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AFF784A22AC8D780001E607 /* Parser.swift */; };
+		9AFF784D22AC8F740001E607 /* Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AFF784C22AC8F740001E607 /* Info.swift */; };
+		9AFF784F22AC91AC0001E607 /* info.json in Resources */ = {isa = PBXBuildFile; fileRef = 9AFF784E22AC8FD60001E607 /* info.json */; };
+		9AFF785122AC9D190001E607 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AFF785022AC9D190001E607 /* Constants.swift */; };
+		9AFF785322ACA0E10001E607 /* UITableView+Dequeue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AFF785222ACA0E10001E607 /* UITableView+Dequeue.swift */; };
+		9AFF785622ACA2740001E607 /* UIColor+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AFF785522ACA2740001E607 /* UIColor+Custom.swift */; };
 		F10FB9B38AB8CDC280F17281 /* Pods_Flux.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAC35EA5C5BF74960FAF4C79 /* Pods_Flux.framework */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +40,11 @@
 		9AFF784622AC86210001E607 /* pizzeria_menus.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pizzeria_menus.json; sourceTree = "<group>"; };
 		9AFF784822AC8D610001E607 /* URLSession+Wrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+Wrap.swift"; sourceTree = "<group>"; };
 		9AFF784A22AC8D780001E607 /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
+		9AFF784C22AC8F740001E607 /* Info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Info.swift; sourceTree = "<group>"; };
+		9AFF784E22AC8FD60001E607 /* info.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = info.json; sourceTree = "<group>"; };
+		9AFF785022AC9D190001E607 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		9AFF785222ACA0E10001E607 /* UITableView+Dequeue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Dequeue.swift"; sourceTree = "<group>"; };
+		9AFF785522ACA2740001E607 /* UIColor+Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Custom.swift"; sourceTree = "<group>"; };
 		B18B525F83D7BA7ECB319EF0 /* Pods-Flux.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Flux.debug.xcconfig"; path = "Target Support Files/Pods-Flux/Pods-Flux.debug.xcconfig"; sourceTree = "<group>"; };
 		E0F1B424CBA5E96B49861351 /* Pods-Flux.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Flux.release.xcconfig"; path = "Target Support Files/Pods-Flux/Pods-Flux.release.xcconfig"; sourceTree = "<group>"; };
 		EAC35EA5C5BF74960FAF4C79 /* Pods_Flux.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Flux.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -91,6 +101,8 @@
 			isa = PBXGroup;
 			children = (
 				9A818DDE22A2A5EC00E88290 /* AppDelegate.swift */,
+				9AFF785022AC9D190001E607 /* Constants.swift */,
+				9AFF785422ACA2600001E607 /* Extensions */,
 				9AADCA4722AB265700EAFADB /* Service */,
 				9AADCA4422AB254700EAFADB /* ViewControllers */,
 				9AADCA4322AB253F00EAFADB /* Models */,
@@ -105,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				9AADCA4522AB256900EAFADB /* Pizzeria.swift */,
+				9AFF784C22AC8F740001E607 /* Info.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -122,7 +135,6 @@
 			isa = PBXGroup;
 			children = (
 				9AADCA4822AB278A00EAFADB /* PizzeriaService.swift */,
-				9AFF784822AC8D610001E607 /* URLSession+Wrap.swift */,
 				9AFF784A22AC8D780001E607 /* Parser.swift */,
 			);
 			path = Service;
@@ -141,9 +153,20 @@
 		9AFF784522AC85E50001E607 /* JSON */ = {
 			isa = PBXGroup;
 			children = (
+				9AFF784E22AC8FD60001E607 /* info.json */,
 				9AFF784622AC86210001E607 /* pizzeria_menus.json */,
 			);
 			path = JSON;
+			sourceTree = "<group>";
+		};
+		9AFF785422ACA2600001E607 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				9AFF785522ACA2740001E607 /* UIColor+Custom.swift */,
+				9AFF784822AC8D610001E607 /* URLSession+Wrap.swift */,
+				9AFF785222ACA0E10001E607 /* UITableView+Dequeue.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -208,6 +231,7 @@
 			files = (
 				9AFF784722AC86210001E607 /* pizzeria_menus.json in Resources */,
 				9A818DE922A2A5ED00E88290 /* LaunchScreen.storyboard in Resources */,
+				9AFF784F22AC91AC0001E607 /* info.json in Resources */,
 				9A818DE622A2A5ED00E88290 /* Assets.xcassets in Resources */,
 				9A818DE422A2A5EC00E88290 /* Main.storyboard in Resources */,
 			);
@@ -268,12 +292,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				9AFF784922AC8D610001E607 /* URLSession+Wrap.swift in Sources */,
+				9AFF784D22AC8F740001E607 /* Info.swift in Sources */,
 				9AADCA4622AB256900EAFADB /* Pizzeria.swift in Sources */,
+				9AFF785622ACA2740001E607 /* UIColor+Custom.swift in Sources */,
 				9AFF784322AC85930001E607 /* InfoTableViewController.swift in Sources */,
 				9A818DE122A2A5EC00E88290 /* MenusViewController.swift in Sources */,
 				9A818DDF22A2A5EC00E88290 /* AppDelegate.swift in Sources */,
 				9AADCA4922AB278A00EAFADB /* PizzeriaService.swift in Sources */,
 				9AFF784B22AC8D780001E607 /* Parser.swift in Sources */,
+				9AFF785322ACA0E10001E607 /* UITableView+Dequeue.swift in Sources */,
+				9AFF785122AC9D190001E607 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

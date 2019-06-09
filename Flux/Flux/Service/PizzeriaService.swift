@@ -3,6 +3,7 @@ import Foundation
 enum Request {
     case menus
     case menu(Menu.MenuType)
+    case info
     
     var jsonName: String {
         switch self {
@@ -10,10 +11,11 @@ enum Request {
             return "\(type.rawValue)_menu.json"
         case .menus:
             return "pizzeria_menus.json"
+        case .info:
+            return "info.json"
         }
     }
 }
-
 
 enum ServiceError: Error {
     case general
@@ -72,7 +74,7 @@ private extension PizzeriaService {
     
     func execute<T: Codable>(_ request: Request, completion: @escaping PizzeriaServiceCompletion<T>) {
         do {
-            if let file = Bundle.main.url(forResource: request.jsonName, withExtension: "") {
+            if let file = Bundle.main.url(forResource: request.jsonName, withExtension: nil) {
                 let data = try Data(contentsOf: file)
                 Parser.parse(with: data) { (result: Result<T, ServiceError>) in
                     completion(result)

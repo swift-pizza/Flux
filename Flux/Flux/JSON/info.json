@@ -1,0 +1,40 @@
+{
+    "sections": [
+        {
+            "title": "Github",
+            "info": [
+                {
+                    "icon": "github",
+                    "title": "Swift & Pizza",
+                    "url": "https://github.com/swift-pizza"
+                },
+                {
+                    "icon": "github",
+                    "title": "Daniele Bogo",
+                    "url": "https://github.com/danielebogo"
+                }
+            ]
+        },
+        {
+            "title": "Site",
+            "info": [
+                {
+                    "icon": "website",
+                    "title": "Swift & Pizza",
+                    "url": "https://www.swiftandpizza.com"
+                }
+            ]
+        },
+        {
+            "title": "Twitter",
+            "info": [
+                {
+                    "icon": "twitter",
+                    "title": "@theillbo",
+                    "url": "https://twitter.com/theillbo"
+                }
+            ]
+        }
+    ]
+}
+

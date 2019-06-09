@@ -1,16 +1,21 @@
 import UIKit
 
 class MenusViewController: UITableViewController {
+    private let service = PizzeriaService()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+
+        setupUI()
+    }
+}
+
+private extension MenusViewController {
+    func setupUI() {
+        navigationItem.title = Constants.ScreenTitles.project
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-
-        let service = PizzeriaService()
+    func loadMenus() {
         service.execute(.menus) { (result: Result<Pizzeria, ServiceError>) in
             switch result {
             case .failure(let error):
