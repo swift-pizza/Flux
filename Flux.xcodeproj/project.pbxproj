@@ -23,6 +23,7 @@
 		9AFF785122AC9D190001E607 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AFF785022AC9D190001E607 /* Constants.swift */; };
 		9AFF785322ACA0E10001E607 /* UITableView+Dequeue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AFF785222ACA0E10001E607 /* UITableView+Dequeue.swift */; };
 		9AFF785622ACA2740001E607 /* UIColor+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AFF785522ACA2740001E607 /* UIColor+Custom.swift */; };
+		9AFF785A22AD1C5D0001E607 /* InfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AFF785922AD1C5D0001E607 /* InfoViewModel.swift */; };
 		F10FB9B38AB8CDC280F17281 /* Pods_Flux.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAC35EA5C5BF74960FAF4C79 /* Pods_Flux.framework */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +46,7 @@
 		9AFF785022AC9D190001E607 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		9AFF785222ACA0E10001E607 /* UITableView+Dequeue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Dequeue.swift"; sourceTree = "<group>"; };
 		9AFF785522ACA2740001E607 /* UIColor+Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Custom.swift"; sourceTree = "<group>"; };
+		9AFF785922AD1C5D0001E607 /* InfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewModel.swift; sourceTree = "<group>"; };
 		B18B525F83D7BA7ECB319EF0 /* Pods-Flux.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Flux.debug.xcconfig"; path = "Target Support Files/Pods-Flux/Pods-Flux.debug.xcconfig"; sourceTree = "<group>"; };
 		E0F1B424CBA5E96B49861351 /* Pods-Flux.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Flux.release.xcconfig"; path = "Target Support Files/Pods-Flux/Pods-Flux.release.xcconfig"; sourceTree = "<group>"; };
 		EAC35EA5C5BF74960FAF4C79 /* Pods_Flux.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Flux.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -126,7 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				9A818DE022A2A5EC00E88290 /* MenusViewController.swift */,
-				9AFF784222AC85930001E607 /* InfoTableViewController.swift */,
+				9AFF785722AD1C290001E607 /* Info */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -167,6 +169,23 @@
 				9AFF785222ACA0E10001E607 /* UITableView+Dequeue.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		9AFF785722AD1C290001E607 /* Info */ = {
+			isa = PBXGroup;
+			children = (
+				9AFF784222AC85930001E607 /* InfoTableViewController.swift */,
+				9AFF785822AD1C340001E607 /* Store */,
+			);
+			path = Info;
+			sourceTree = "<group>";
+		};
+		9AFF785822AD1C340001E607 /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				9AFF785922AD1C5D0001E607 /* InfoViewModel.swift */,
+			);
+			path = Store;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -293,6 +312,7 @@
 			files = (
 				9AFF784922AC8D610001E607 /* URLSession+Wrap.swift in Sources */,
 				9AFF784D22AC8F740001E607 /* Info.swift in Sources */,
+				9AFF785A22AD1C5D0001E607 /* InfoViewModel.swift in Sources */,
 				9AADCA4622AB256900EAFADB /* Pizzeria.swift in Sources */,
 				9AFF785622ACA2740001E607 /* UIColor+Custom.swift in Sources */,
 				9AFF784322AC85930001E607 /* InfoTableViewController.swift in Sources */,
