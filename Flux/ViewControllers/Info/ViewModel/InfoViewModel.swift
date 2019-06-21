@@ -5,13 +5,14 @@ class InfoViewModel<Service: RemoteService>: Observable {
     enum State {
         case stationary
         case loading
-        case completed(Bool, [InfoSection])
+        case completed(Bool)
     }
 
     var changeDispatcher: Dispatcher<Void> = Dispatcher()
     
     private var storeReceipt: Receipt?
     private let store: InfoStore<Service>
+    private (set) var sections: [InfoSection] = []
     private (set) var state: State = .stationary {
         didSet {
             DispatchQueue.main.async {
@@ -29,7 +30,8 @@ class InfoViewModel<Service: RemoteService>: Observable {
             case .fetching:
                 self?.state = .loading
             case .fetchingCompleted(let sections, let error):
-                self?.state = .completed(error == nil, sections)
+                self?.sections = sections
+                self?.state = .completed(error == nil)
             }
         }
     }

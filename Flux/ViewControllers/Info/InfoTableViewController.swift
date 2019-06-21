@@ -7,11 +7,6 @@ class InfoTableViewController: UITableViewController {
 
     private var receipt: Receipt!
     private var viewModel: InfoViewModel<PizzeriaService>!
-    private var sections: [InfoSection] = [] {
-        didSet {
-            tableView.reloadData()
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,15 +18,15 @@ class InfoTableViewController: UITableViewController {
 
 extension InfoTableViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return sections.count
+        return viewModel.sections.count
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sections[section].info.count
+        return viewModel.sections[section].info.count
     }
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return sections[section].title
+        return viewModel.sections[section].title
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -40,17 +35,17 @@ extension InfoTableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UITableViewCell = tableView.dequeue(cellAt: indexPath, for: Constants.Cells.Identifiers.info)
-        cell.textLabel?.text = sections[indexPath.section].info[indexPath.row].title
-        cell.detailTextLabel?.text = sections[indexPath.section].info[indexPath.row].url
+        cell.textLabel?.text = viewModel.sections[indexPath.section].info[indexPath.row].title
+        cell.detailTextLabel?.text = viewModel.sections[indexPath.section].info[indexPath.row].url
         cell.imageView?.tintColor = .customColor(.darkYellow)
-        cell.imageView?.image = UIImage(named: sections[indexPath.section].info[indexPath.row].icon)?.withRenderingMode(.alwaysTemplate)
+        cell.imageView?.image = UIImage(named: viewModel.sections[indexPath.section].info[indexPath.row].icon)?.withRenderingMode(.alwaysTemplate)
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
 
-        let urlString = sections[indexPath.section].info[indexPath.row].url
+        let urlString = viewModel.sections[indexPath.section].info[indexPath.row].url
         open(urlString)
     }
 }
@@ -85,12 +80,9 @@ private extension InfoTableViewController {
             switch self.viewModel.state {
             case .loading, .stationary:
                 self.refreshControl?.beginRefreshing()
-            case .completed(let success, let sections):
+            case .completed:
                 self.refreshControl?.endRefreshing()
-
-                if success {
-                    self.sections = sections
-                }
+                self.tableView.reloadData()
             }
         }
     }
