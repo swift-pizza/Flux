@@ -56,10 +56,31 @@ extension InfoTableViewController {
 private extension InfoTableViewController {
     func setupUI() {
         navigationItem.title = Constants.ScreenTitles.info
+
+        let control = UIRefreshControl()
+        refreshControl = control
+        refreshControl?.addTarget(self, action: #selector(refreshControlDidStart(sender:)), for: .valueChanged)
+        refreshControl?.beginRefreshing()
+
+        let contentOffset = CGPoint(x: 0, y: -control.frame.height)
+        tableView.setContentOffset(contentOffset, animated: true)
+    }
+    
+    @objc func refreshControlDidStart(sender: UIRefreshControl?) {
+        viewModel.fetchInfo()
     }
     
     func setViewModel() {
         receipt = viewModel.onChange { [unowned self] in
+            self.updateView()
+        }
+        viewModel.fetchInfo()
+    }
+    
+    func updateView() {
+        DispatchQueue.main.async {
+            self.refreshControl?.endRefreshing()
+
             switch self.viewModel.state {
             case .loading, .stationary:
                 // loading
@@ -68,10 +89,8 @@ private extension InfoTableViewController {
                 if success {
                     self.sections = sections
                 }
-                break
             }
         }
-        viewModel.start()
     }
 
     func open(_ urlString: String) {
