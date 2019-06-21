@@ -79,13 +79,12 @@ private extension InfoTableViewController {
     
     func updateView() {
         DispatchQueue.main.async {
-            self.refreshControl?.endRefreshing()
-
             switch self.viewModel.state {
             case .loading, .stationary:
-                // loading
-                break
+                self.refreshControl?.beginRefreshing()
             case .completed(let success, let sections):
+                self.refreshControl?.endRefreshing()
+
                 if success {
                     self.sections = sections
                 }
