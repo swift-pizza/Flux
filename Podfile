@@ -6,6 +6,6 @@ target 'Flux' do
   use_frameworks!
 
   # Pods for Flux
-  pod 'WordPressFlux', '~> 1.0'
+  pod 'WordPressFlux', '~> 1.0.1-beta'
 
 end

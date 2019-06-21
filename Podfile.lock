@@ -1,16 +1,16 @@
 PODS:
-  - WordPressFlux (1.0.0)
+  - WordPressFlux (1.0.1-beta.1)
 
 DEPENDENCIES:
-  - WordPressFlux (~> 1.0)
+  - WordPressFlux (~> 1.0.1-beta)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - WordPressFlux
 
 SPEC CHECKSUMS:
-  WordPressFlux: a381542b0a0414ef85fb0b2a0f9dbde78ffe0637
+  WordPressFlux: 86000d767c3fe9513506ddd07936c8fcda1a268b
 
-PODFILE CHECKSUM: e7cc65bed7fd2b9d4cd0368f410bfbab9f684c75
+PODFILE CHECKSUM: 0192e10f2f61c0023543cc74b3a7f12d31c5855d
 
-COCOAPODS: 1.6.1
+COCOAPODS: 1.7.1
