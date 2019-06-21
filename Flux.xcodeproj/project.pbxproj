@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,6 +12,7 @@
 		9A818DE422A2A5EC00E88290 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A818DE222A2A5EC00E88290 /* Main.storyboard */; };
 		9A818DE622A2A5ED00E88290 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A818DE522A2A5ED00E88290 /* Assets.xcassets */; };
 		9A818DE922A2A5ED00E88290 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A818DE722A2A5ED00E88290 /* LaunchScreen.storyboard */; };
+		9AA68E9A22BD2F100048AA0C /* InfoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA68E9922BD2F100048AA0C /* InfoStore.swift */; };
 		9AADCA4622AB256900EAFADB /* Pizzeria.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AADCA4522AB256900EAFADB /* Pizzeria.swift */; };
 		9AADCA4922AB278A00EAFADB /* PizzeriaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AADCA4822AB278A00EAFADB /* PizzeriaService.swift */; };
 		9AFF784322AC85930001E607 /* InfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AFF784222AC85930001E607 /* InfoTableViewController.swift */; };
@@ -35,6 +36,7 @@
 		9A818DE522A2A5ED00E88290 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9A818DE822A2A5ED00E88290 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9A818DEA22A2A5ED00E88290 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9AA68E9922BD2F100048AA0C /* InfoStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoStore.swift; sourceTree = "<group>"; };
 		9AADCA4522AB256900EAFADB /* Pizzeria.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pizzeria.swift; sourceTree = "<group>"; };
 		9AADCA4822AB278A00EAFADB /* PizzeriaService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzeriaService.swift; sourceTree = "<group>"; };
 		9AFF784222AC85930001E607 /* InfoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewController.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				9AFF785022AC9D190001E607 /* Constants.swift */,
 				9AFF785422ACA2600001E607 /* Extensions */,
 				9AADCA4722AB265700EAFADB /* Service */,
+				9AA68E9822BD2EF10048AA0C /* Stores */,
 				9AADCA4422AB254700EAFADB /* ViewControllers */,
 				9AADCA4322AB253F00EAFADB /* Models */,
 				9AFF784422AC85D80001E607 /* Assets */,
@@ -113,6 +116,14 @@
 				9A818DEA22A2A5ED00E88290 /* Info.plist */,
 			);
 			path = Flux;
+			sourceTree = "<group>";
+		};
+		9AA68E9822BD2EF10048AA0C /* Stores */ = {
+			isa = PBXGroup;
+			children = (
+				9AA68E9922BD2F100048AA0C /* InfoStore.swift */,
+			);
+			path = Stores;
 			sourceTree = "<group>";
 		};
 		9AADCA4322AB253F00EAFADB /* Models */ = {
@@ -175,17 +186,17 @@
 			isa = PBXGroup;
 			children = (
 				9AFF784222AC85930001E607 /* InfoTableViewController.swift */,
-				9AFF785822AD1C340001E607 /* Store */,
+				9AFF785822AD1C340001E607 /* ViewModel */,
 			);
 			path = Info;
 			sourceTree = "<group>";
 		};
-		9AFF785822AD1C340001E607 /* Store */ = {
+		9AFF785822AD1C340001E607 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				9AFF785922AD1C5D0001E607 /* InfoViewModel.swift */,
 			);
-			path = Store;
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -315,6 +326,7 @@
 				9A818DDF22A2A5EC00E88290 /* AppDelegate.swift in Sources */,
 				9AADCA4922AB278A00EAFADB /* PizzeriaService.swift in Sources */,
 				9AFF784B22AC8D780001E607 /* Parser.swift in Sources */,
+				9AA68E9A22BD2F100048AA0C /* InfoStore.swift in Sources */,
 				9AFF785322ACA0E10001E607 /* UITableView+Dequeue.swift in Sources */,
 				9AFF785122AC9D190001E607 /* Constants.swift in Sources */,
 			);

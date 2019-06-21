@@ -3,8 +3,10 @@ import SafariServices
 import WordPressFlux
 
 class InfoTableViewController: UITableViewController {
+    private let service = PizzeriaService(Constants.environment)
+
     private var receipt: Receipt!
-    private let viewModel = InfoViewModel()
+    private var viewModel: InfoViewModel<PizzeriaService>!
     private var sections: [InfoSection] = [] {
         didSet {
             tableView.reloadData()
@@ -71,6 +73,7 @@ private extension InfoTableViewController {
     }
     
     func setViewModel() {
+        viewModel = InfoViewModel(service: service)
         receipt = viewModel.onChange { [unowned self] in
             self.updateView()
         }

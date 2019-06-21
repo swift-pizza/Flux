@@ -1,6 +1,9 @@
 import UIKit
 
 enum Constants {
+    static let environment = Environment.production("http://bogodaniele.com/pizza-swift/01/")
+//    static let environment = Environment.local
+
     enum Cells {
         enum Identifiers {
             static let menu = "MenuCell"

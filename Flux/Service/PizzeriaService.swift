@@ -22,14 +22,20 @@ enum ServiceError: Error {
     case custom(title: String?, description: String?, code: Int)
 }
 
-class PizzeriaService {
-    typealias PizzeriaServiceCompletion<T: Decodable> = (Result<T, ServiceError>) -> Void
+enum Environment {
+    case local
+    case production(String)
+}
 
-    enum Environment {
-        case local
-        case production(String)
-    }
+protocol RemoteService: class {
+    typealias RemoteServiceCompletion<T: Codable> = (Result<T, ServiceError>) -> Void
+    
+    init(_ environment: Environment)
+    
+    func execute<T: Codable>(_ request: Request, _ completion: @escaping RemoteServiceCompletion<T>)
+}
 
+class PizzeriaService: RemoteService {
     private let environment: Environment
     private lazy var session: URLSession = {
         let configuration = URLSessionConfiguration.default
@@ -38,11 +44,11 @@ class PizzeriaService {
         return URLSession(configuration: configuration)
     }()
     
-    init(_ environment: Environment = .local) {
+    required init(_ environment: Environment = .local) {
         self.environment = environment
     }
 
-    func execute<T: Codable>(_ request: Request, _ completion: @escaping PizzeriaServiceCompletion<T>) {
+    func execute<T: Codable>(_ request: Request, _ completion: @escaping RemoteServiceCompletion<T>) {
         switch environment {
         case .local:
             execute(request, completion: completion)
@@ -53,7 +59,7 @@ class PizzeriaService {
 }
 
 private extension PizzeriaService {
-    func execute<T: Codable>(_ remote:(request: Request, baseURLString: String), _ completion: @escaping PizzeriaServiceCompletion<T>) {
+    func execute<T: Codable>(_ remote:(request: Request, baseURLString: String), _ completion: @escaping RemoteServiceCompletion<T>) {
         let fullURLString = remote.baseURLString + remote.request.jsonName
         guard let url = URL(string: fullURLString) else {
             completion(.failure(ServiceError.general))
@@ -72,7 +78,7 @@ private extension PizzeriaService {
         task.resume()
     }
     
-    func execute<T: Codable>(_ request: Request, completion: @escaping PizzeriaServiceCompletion<T>) {
+    func execute<T: Codable>(_ request: Request, completion: @escaping RemoteServiceCompletion<T>) {
         do {
             if let file = Bundle.main.url(forResource: request.jsonName, withExtension: nil) {
                 let data = try Data(contentsOf: file)
