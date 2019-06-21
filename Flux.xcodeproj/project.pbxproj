@@ -126,6 +126,14 @@
 			path = Stores;
 			sourceTree = "<group>";
 		};
+		9AA68E9B22BD59440048AA0C /* Menus */ = {
+			isa = PBXGroup;
+			children = (
+				9A818DE022A2A5EC00E88290 /* MenusViewController.swift */,
+			);
+			path = Menus;
+			sourceTree = "<group>";
+		};
 		9AADCA4322AB253F00EAFADB /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -138,7 +146,7 @@
 		9AADCA4422AB254700EAFADB /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				9A818DE022A2A5EC00E88290 /* MenusViewController.swift */,
+				9AA68E9B22BD59440048AA0C /* Menus */,
 				9AFF785722AD1C290001E607 /* Info */,
 			);
 			path = ViewControllers;

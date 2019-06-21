@@ -44,7 +44,7 @@ class PizzeriaService: RemoteService {
         return URLSession(configuration: configuration)
     }()
     
-    required init(_ environment: Environment = .local) {
+    required init(_ environment: Environment) {
         self.environment = environment
     }
 
