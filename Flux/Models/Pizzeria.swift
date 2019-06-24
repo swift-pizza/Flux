@@ -1,6 +1,10 @@
 import Foundation
 
-struct Menu: Codable {
+struct Pizzeria: Codable {
+    var menus: [Menu]
+}
+
+struct Menu: Codable, Hashable {
     enum MenuType: String, Codable {
         case classic
         case white
@@ -10,8 +14,4 @@ struct Menu: Codable {
 
     var type: MenuType
     var title: String
-}
-
-struct Pizzeria: Codable {
-    var menus: [Menu]
 }

@@ -6,26 +6,7 @@ enum InfoStoreAction: Action {
 }
 
 struct InfoStoreState {
-    enum Status: Equatable {
-        case stationary
-        case fetching
-        case fetchingCompleted(error: ServiceError?)
-        
-        static func == (lhs: InfoStoreState.Status, rhs: InfoStoreState.Status) -> Bool {
-            switch (lhs, rhs) {
-            case (.stationary, .stationary):
-                return true
-            case (.fetching, .fetching):
-                return true
-            case (.fetchingCompleted, .fetchingCompleted):
-                return true
-            default:
-                return false
-            }
-        }
-    }
-
-    var status: Status = .stationary
+    var status: StoreStatus = .stationary
     var sections: [InfoSection] = []
 }
 
@@ -66,7 +47,7 @@ private extension InfoStore {
         service?.execute(.info) { [weak self] (result: Result<About, ServiceError>) in
             DispatchQueue.main.async {
                 self?.transaction { state in
-                    state.sections = result.getSection()
+                    state.sections = result.getSuccess()?.sections ?? []
                     state.status = .fetchingCompleted(error: result.getError())
                 }
             }
@@ -74,13 +55,13 @@ private extension InfoStore {
     }
 }
 
-fileprivate extension Result where Success == About, Failure == ServiceError {
-    func getSection() -> [InfoSection] {
+extension Result where Failure == ServiceError {
+    func getSuccess() -> Success? {
         switch self {
         case .failure:
-            return []
-        case .success(let me):
-            return me.sections
+            return nil
+        case .success(let value):
+            return value
         }
     }
     

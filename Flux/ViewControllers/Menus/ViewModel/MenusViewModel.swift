@@ -13,7 +13,9 @@ class MenusViewModel<Service: RemoteService>: Observable {
         return []
     }
     
+    private var getMenusReceipt: Receipt?
     private var storeReceipt: Receipt?
+    private let store: MenusStore<Service>
     private (set) var state: State = .stationary {
         didSet {
             self.emitChange()
@@ -21,10 +23,17 @@ class MenusViewModel<Service: RemoteService>: Observable {
     }
     
     init(service: Service) {
-        
+        store = MenusStore(service: service)
+        storeReceipt = store.onStateChange { [weak self] (_, state) in
+            
+        }
     }
     
     func fetchMenus() {
-        
+        getMenusReceipt = store.query(.getMenus)
+    }
+    
+    func reloadMenus() {
+        store.onDispatch(MenusStoreAction.getMenus)
     }
 }

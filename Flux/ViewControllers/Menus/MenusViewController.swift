@@ -18,6 +18,11 @@ class MenusViewController: UITableViewController {
 private extension MenusViewController {
     func setupUI() {
         navigationItem.title = Constants.ScreenTitles.project
+        
+        let control = UIRefreshControl()
+        refreshControl = control
+        refreshControl?.addTarget(self, action: #selector(reloadMenus(sender:)), for: .valueChanged)
+        tableView.beginRefreshing()
     }
 
     func setViewModel() {
@@ -38,6 +43,10 @@ private extension MenusViewController {
                 self.tableView.reloadData()
             }
         }
+    }
+    
+    @objc func reloadMenus(sender: UIRefreshControl?) {
+        viewModel.reloadMenus()
     }
 }
 
