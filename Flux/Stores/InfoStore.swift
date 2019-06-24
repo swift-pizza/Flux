@@ -9,7 +9,7 @@ struct InfoStoreState {
     enum Status: Equatable {
         case stationary
         case fetching
-        case fetchingCompleted(sections: [InfoSection], error: ServiceError?)
+        case fetchingCompleted(error: ServiceError?)
         
         static func == (lhs: InfoStoreState.Status, rhs: InfoStoreState.Status) -> Bool {
             switch (lhs, rhs) {
@@ -24,8 +24,9 @@ struct InfoStoreState {
             }
         }
     }
-    
+
     var status: Status = .stationary
+    var sections: [InfoSection] = []
 }
 
 class InfoStore<Service: RemoteService>: StatefulStore<InfoStoreState> {
@@ -46,6 +47,10 @@ class InfoStore<Service: RemoteService>: StatefulStore<InfoStoreState> {
             fetchInfo()
         }
     }
+    
+    func getSections() -> [InfoSection] {
+        return state.sections
+    }
 }
 
 private extension InfoStore {
@@ -61,8 +66,8 @@ private extension InfoStore {
         service?.execute(.info) { [weak self] (result: Result<About, ServiceError>) in
             DispatchQueue.main.async {
                 self?.transaction { state in
-                    state.status = .fetchingCompleted(sections: result.getSection(),
-                                                      error: result.getError())
+                    state.sections = result.getSection()
+                    state.status = .fetchingCompleted(error: result.getError())
                 }
             }
         }

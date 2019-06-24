@@ -1,18 +1,17 @@
 import UIKit
+import WordPressFlux
 
 class MenusViewController: UITableViewController {
     private let service = PizzeriaService(.local)
-    private var menus: [Menu] = [] {
-        didSet {
-            tableView.reloadData()
-        }
-    }
+    
+    private var receipt: Receipt!
+    private var viewModel: MenusViewModel<PizzeriaService>!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupUI()
-        loadMenus()
+        setViewModel()
     }
 }
 
@@ -21,13 +20,22 @@ private extension MenusViewController {
         navigationItem.title = Constants.ScreenTitles.project
     }
 
-    func loadMenus() {
-        service.execute(.menus) { (result: Result<Pizzeria, ServiceError>) in
-            switch result {
-            case .failure(let error):
-                print(error)
-            case .success(let pizzeria):
-                self.menus = pizzeria.menus
+    func setViewModel() {
+        viewModel = MenusViewModel(service: service)
+        receipt = viewModel.onChange { [unowned self] in
+            self.updateView()
+        }
+        viewModel.fetchMenus()
+    }
+    
+    func updateView() {
+        DispatchQueue.main.async {
+            switch self.viewModel.state {
+            case .loading, .stationary:
+                self.tableView.beginRefreshing()
+            case .completed:
+                self.tableView.endRefreshing()
+                self.tableView.reloadData()
             }
         }
     }
@@ -35,7 +43,7 @@ private extension MenusViewController {
 
 extension MenusViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return menus.count
+        return viewModel.menus.count
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -43,7 +51,7 @@ extension MenusViewController {
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return menus[section].type.rawValue.capitalized
+        return viewModel.menus[section].type.rawValue.capitalized
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -52,12 +60,13 @@ extension MenusViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UITableViewCell = tableView.dequeue(cellAt: indexPath, for: Constants.Cells.Identifiers.menu)
-        cell.textLabel?.text = menus[indexPath.section].title
+        cell.textLabel?.text = viewModel.menus[indexPath.section].title
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        super.tableView(tableView, didSelectRowAt: indexPath)
+
         tableView.deselectRow(at: indexPath, animated: true)
-        
     }
 }

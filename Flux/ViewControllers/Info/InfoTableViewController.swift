@@ -57,10 +57,7 @@ private extension InfoTableViewController {
         let control = UIRefreshControl()
         refreshControl = control
         refreshControl?.addTarget(self, action: #selector(refreshControlDidStart(sender:)), for: .valueChanged)
-        refreshControl?.beginRefreshing()
-
-        let contentOffset = CGPoint(x: 0, y: -control.frame.height)
-        tableView.setContentOffset(contentOffset, animated: true)
+        tableView.beginRefreshing()
     }
     
     @objc func refreshControlDidStart(sender: UIRefreshControl?) {
@@ -79,9 +76,9 @@ private extension InfoTableViewController {
         DispatchQueue.main.async {
             switch self.viewModel.state {
             case .loading, .stationary:
-                self.refreshControl?.beginRefreshing()
+                self.tableView.beginRefreshing()
             case .completed:
-                self.refreshControl?.endRefreshing()
+                self.tableView.endRefreshing()
                 self.tableView.reloadData()
             }
         }

@@ -9,15 +9,15 @@ class InfoViewModel<Service: RemoteService>: Observable {
     }
 
     var changeDispatcher: Dispatcher<Void> = Dispatcher()
-    
+    var sections: [InfoSection] {
+        return store.getSections()
+    }
+
     private var storeReceipt: Receipt?
     private let store: InfoStore<Service>
-    private (set) var sections: [InfoSection] = []
     private (set) var state: State = .stationary {
         didSet {
-            DispatchQueue.main.async {
-                self.emitChange()
-            }
+            self.emitChange()
         }
     }
     
@@ -29,8 +29,7 @@ class InfoViewModel<Service: RemoteService>: Observable {
                 self?.state = .stationary
             case .fetching:
                 self?.state = .loading
-            case .fetchingCompleted(let sections, let error):
-                self?.sections = sections
+            case .fetchingCompleted(let error):
                 self?.state = .completed(error == nil)
             }
         }

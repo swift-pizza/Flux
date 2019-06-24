@@ -13,6 +13,7 @@
 		9A818DE622A2A5ED00E88290 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A818DE522A2A5ED00E88290 /* Assets.xcassets */; };
 		9A818DE922A2A5ED00E88290 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A818DE722A2A5ED00E88290 /* LaunchScreen.storyboard */; };
 		9AA68E9A22BD2F100048AA0C /* InfoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA68E9922BD2F100048AA0C /* InfoStore.swift */; };
+		9AA68EA122C110150048AA0C /* MenusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA68EA022C110150048AA0C /* MenusViewModel.swift */; };
 		9AADCA4622AB256900EAFADB /* Pizzeria.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AADCA4522AB256900EAFADB /* Pizzeria.swift */; };
 		9AADCA4922AB278A00EAFADB /* PizzeriaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AADCA4822AB278A00EAFADB /* PizzeriaService.swift */; };
 		9AFF784322AC85930001E607 /* InfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AFF784222AC85930001E607 /* InfoTableViewController.swift */; };
@@ -22,7 +23,7 @@
 		9AFF784D22AC8F740001E607 /* Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AFF784C22AC8F740001E607 /* Info.swift */; };
 		9AFF784F22AC91AC0001E607 /* info.json in Resources */ = {isa = PBXBuildFile; fileRef = 9AFF784E22AC8FD60001E607 /* info.json */; };
 		9AFF785122AC9D190001E607 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AFF785022AC9D190001E607 /* Constants.swift */; };
-		9AFF785322ACA0E10001E607 /* UITableView+Dequeue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AFF785222ACA0E10001E607 /* UITableView+Dequeue.swift */; };
+		9AFF785322ACA0E10001E607 /* UITableView+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AFF785222ACA0E10001E607 /* UITableView+Helpers.swift */; };
 		9AFF785622ACA2740001E607 /* UIColor+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AFF785522ACA2740001E607 /* UIColor+Custom.swift */; };
 		9AFF785A22AD1C5D0001E607 /* InfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AFF785922AD1C5D0001E607 /* InfoViewModel.swift */; };
 		F10FB9B38AB8CDC280F17281 /* Pods_Flux.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAC35EA5C5BF74960FAF4C79 /* Pods_Flux.framework */; };
@@ -37,6 +38,7 @@
 		9A818DE822A2A5ED00E88290 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9A818DEA22A2A5ED00E88290 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9AA68E9922BD2F100048AA0C /* InfoStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoStore.swift; sourceTree = "<group>"; };
+		9AA68EA022C110150048AA0C /* MenusViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenusViewModel.swift; sourceTree = "<group>"; };
 		9AADCA4522AB256900EAFADB /* Pizzeria.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pizzeria.swift; sourceTree = "<group>"; };
 		9AADCA4822AB278A00EAFADB /* PizzeriaService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzeriaService.swift; sourceTree = "<group>"; };
 		9AFF784222AC85930001E607 /* InfoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewController.swift; sourceTree = "<group>"; };
@@ -46,7 +48,7 @@
 		9AFF784C22AC8F740001E607 /* Info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Info.swift; sourceTree = "<group>"; };
 		9AFF784E22AC8FD60001E607 /* info.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = info.json; sourceTree = "<group>"; };
 		9AFF785022AC9D190001E607 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		9AFF785222ACA0E10001E607 /* UITableView+Dequeue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Dequeue.swift"; sourceTree = "<group>"; };
+		9AFF785222ACA0E10001E607 /* UITableView+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Helpers.swift"; sourceTree = "<group>"; };
 		9AFF785522ACA2740001E607 /* UIColor+Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Custom.swift"; sourceTree = "<group>"; };
 		9AFF785922AD1C5D0001E607 /* InfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewModel.swift; sourceTree = "<group>"; };
 		B18B525F83D7BA7ECB319EF0 /* Pods-Flux.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Flux.debug.xcconfig"; path = "Target Support Files/Pods-Flux/Pods-Flux.debug.xcconfig"; sourceTree = "<group>"; };
@@ -130,8 +132,17 @@
 			isa = PBXGroup;
 			children = (
 				9A818DE022A2A5EC00E88290 /* MenusViewController.swift */,
+				9AA68E9F22C110000048AA0C /* ViewModel */,
 			);
 			path = Menus;
+			sourceTree = "<group>";
+		};
+		9AA68E9F22C110000048AA0C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9AA68EA022C110150048AA0C /* MenusViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		9AADCA4322AB253F00EAFADB /* Models */ = {
@@ -185,7 +196,7 @@
 			children = (
 				9AFF785522ACA2740001E607 /* UIColor+Custom.swift */,
 				9AFF784822AC8D610001E607 /* URLSession+Wrap.swift */,
-				9AFF785222ACA0E10001E607 /* UITableView+Dequeue.swift */,
+				9AFF785222ACA0E10001E607 /* UITableView+Helpers.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -329,13 +340,14 @@
 				9AFF785A22AD1C5D0001E607 /* InfoViewModel.swift in Sources */,
 				9AADCA4622AB256900EAFADB /* Pizzeria.swift in Sources */,
 				9AFF785622ACA2740001E607 /* UIColor+Custom.swift in Sources */,
+				9AA68EA122C110150048AA0C /* MenusViewModel.swift in Sources */,
 				9AFF784322AC85930001E607 /* InfoTableViewController.swift in Sources */,
 				9A818DE122A2A5EC00E88290 /* MenusViewController.swift in Sources */,
 				9A818DDF22A2A5EC00E88290 /* AppDelegate.swift in Sources */,
 				9AADCA4922AB278A00EAFADB /* PizzeriaService.swift in Sources */,
 				9AFF784B22AC8D780001E607 /* Parser.swift in Sources */,
 				9AA68E9A22BD2F100048AA0C /* InfoStore.swift in Sources */,
-				9AFF785322ACA0E10001E607 /* UITableView+Dequeue.swift in Sources */,
+				9AFF785322ACA0E10001E607 /* UITableView+Helpers.swift in Sources */,
 				9AFF785122AC9D190001E607 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
