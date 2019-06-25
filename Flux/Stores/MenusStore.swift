@@ -18,6 +18,11 @@ struct MenusStoreState {
     var fetchingMenus: Bool = false
     
     var deletingMenu = Set<MenuType>()
+    
+    func isOperating() -> Bool {
+        return fetchingMenus ||
+            !deletingMenu.isEmpty
+    }
 }
 
 class MenusStore<Service: RemoteService>: QueryStore<MenusStoreState, MenusStoreQuery> {

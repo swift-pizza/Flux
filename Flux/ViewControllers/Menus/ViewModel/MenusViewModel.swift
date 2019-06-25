@@ -5,12 +5,12 @@ class MenusViewModel<Service: RemoteService>: Observable {
     enum State {
         case stationary
         case loading
-        case completed(Bool)
+        case completed
     }
 
     var changeDispatcher: Dispatcher<Void> = Dispatcher()
     var menus: [Menu] {
-        return []
+        return store.getMenus()
     }
     
     private var getMenusReceipt: Receipt?
@@ -25,7 +25,7 @@ class MenusViewModel<Service: RemoteService>: Observable {
     init(service: Service) {
         store = MenusStore(service: service)
         storeReceipt = store.onStateChange { [weak self] (_, state) in
-            
+            self?.state = state.isOperating() ? .loading : .completed
         }
     }
     
