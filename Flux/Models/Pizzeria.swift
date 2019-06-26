@@ -15,3 +15,8 @@ struct Menu: Codable, Hashable {
     var type: MenuType
     var title: String
 }
+
+struct Pizza: Codable {
+    var name: String
+    var ingredients: String
+}

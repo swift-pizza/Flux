@@ -1,0 +1,50 @@
+[
+    {
+        "name": "Ariete",
+        "ingredients": "pomodoro, mozzarella, brie, speck, rucola"
+    },
+    {
+        "name": "Toro",
+        "ingredients": "pomodoro, mozzarella, brie, bresaola"
+    },
+    {
+        "name": "Gemelli",
+        "ingredients": "pomodoro, mozzarella, gorgonzola, noci"
+    },
+    {
+        "name": "Cancro",
+        "ingredients": "pomodoro, mozzarella, brie, rucola"
+    },
+    {
+        "name": "Leone",
+        "ingredients": "pomodoro, mozzarella, cipolla, asparagi, uova, prezzemolo"
+    },
+    {
+        "name": "Vergine (pizza bianca)",
+        "ingredients": "mozzarella, panna, speak"
+    },
+    {
+        "name": "Bilancia",
+        "ingredients": "pomodoro, mozzarella, piselli, prosciutto, panna"
+    },
+    {
+        "name": "Scorpione",
+        "ingredients": "pomodoro, mozzarella, salsiccia, funghi"
+    },
+    {
+        "name": "Sagittario",
+        "ingredients": "pomodoro, mozzarella, tonno, olive"
+    },
+    {
+        "name": "Capricorno",
+        "ingredients": "pomodoro, mozzarella, crudo, rucola, grana"
+    },
+    {
+        "name": "Acquario",
+        "ingredients": "pomodoro, mozzarella, gamberetti, salsa rosa"
+    },
+    {
+        "name": "Pesci",
+        "ingredients": "pomodoro, mozzarella, salmone, gamberetti"
+    }
+]

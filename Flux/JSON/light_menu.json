@@ -1,0 +1,18 @@
+[
+    {
+        "name": "Valdostana",
+        "ingredients": "pomodoro, bresaola, rucola, grana"
+    },
+    {
+        "name": "Rustica",
+        "ingredients": "pomodoro, radicchio, rucola, sfilacci"
+    },
+    {
+        "name": "Mediterranea",
+        "ingredients": "pomodoro, zucchine, gamberetti"
+    },
+    {
+        "name": "Leggera",
+        "ingredients": "pomodoro, rucola, petto d’oca"
+    }
+]

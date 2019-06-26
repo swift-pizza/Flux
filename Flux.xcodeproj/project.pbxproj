@@ -12,9 +12,13 @@
 		9A818DE422A2A5EC00E88290 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A818DE222A2A5EC00E88290 /* Main.storyboard */; };
 		9A818DE622A2A5ED00E88290 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A818DE522A2A5ED00E88290 /* Assets.xcassets */; };
 		9A818DE922A2A5ED00E88290 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A818DE722A2A5ED00E88290 /* LaunchScreen.storyboard */; };
+		9AA1642F22C2CB5B00FD6AE4 /* classic_menu.json in Resources */ = {isa = PBXBuildFile; fileRef = 9AA1642E22C2C9BA00FD6AE4 /* classic_menu.json */; };
+		9AA1643122C35E9A00FD6AE4 /* white_menu.json in Resources */ = {isa = PBXBuildFile; fileRef = 9AA1643022C35E8500FD6AE4 /* white_menu.json */; };
+		9AA1643422C35F5300FD6AE4 /* light_menu.json in Resources */ = {isa = PBXBuildFile; fileRef = 9AA1643222C35F3800FD6AE4 /* light_menu.json */; };
+		9AA1643522C35F5300FD6AE4 /* special_menu.json in Resources */ = {isa = PBXBuildFile; fileRef = 9AA1643322C35F4800FD6AE4 /* special_menu.json */; };
 		9AA68E9A22BD2F100048AA0C /* InfoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA68E9922BD2F100048AA0C /* InfoStore.swift */; };
 		9AA68EA122C110150048AA0C /* MenusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA68EA022C110150048AA0C /* MenusViewModel.swift */; };
-		9AA68EA322C112A90048AA0C /* MenusStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA68EA222C112A90048AA0C /* MenusStore.swift */; };
+		9AA68EA322C112A90048AA0C /* PizzeriaStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA68EA222C112A90048AA0C /* PizzeriaStore.swift */; };
 		9AA68EA522C113F80048AA0C /* StoreStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA68EA422C113F80048AA0C /* StoreStatus.swift */; };
 		9AADCA4622AB256900EAFADB /* Pizzeria.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AADCA4522AB256900EAFADB /* Pizzeria.swift */; };
 		9AADCA4922AB278A00EAFADB /* PizzeriaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AADCA4822AB278A00EAFADB /* PizzeriaService.swift */; };
@@ -39,9 +43,13 @@
 		9A818DE522A2A5ED00E88290 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9A818DE822A2A5ED00E88290 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9A818DEA22A2A5ED00E88290 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9AA1642E22C2C9BA00FD6AE4 /* classic_menu.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = classic_menu.json; sourceTree = "<group>"; };
+		9AA1643022C35E8500FD6AE4 /* white_menu.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = white_menu.json; sourceTree = "<group>"; };
+		9AA1643222C35F3800FD6AE4 /* light_menu.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = light_menu.json; sourceTree = "<group>"; };
+		9AA1643322C35F4800FD6AE4 /* special_menu.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = special_menu.json; sourceTree = "<group>"; };
 		9AA68E9922BD2F100048AA0C /* InfoStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoStore.swift; sourceTree = "<group>"; };
 		9AA68EA022C110150048AA0C /* MenusViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenusViewModel.swift; sourceTree = "<group>"; };
-		9AA68EA222C112A90048AA0C /* MenusStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenusStore.swift; sourceTree = "<group>"; };
+		9AA68EA222C112A90048AA0C /* PizzeriaStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzeriaStore.swift; sourceTree = "<group>"; };
 		9AA68EA422C113F80048AA0C /* StoreStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreStatus.swift; sourceTree = "<group>"; };
 		9AADCA4522AB256900EAFADB /* Pizzeria.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pizzeria.swift; sourceTree = "<group>"; };
 		9AADCA4822AB278A00EAFADB /* PizzeriaService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzeriaService.swift; sourceTree = "<group>"; };
@@ -129,7 +137,7 @@
 			children = (
 				9AA68EA422C113F80048AA0C /* StoreStatus.swift */,
 				9AA68E9922BD2F100048AA0C /* InfoStore.swift */,
-				9AA68EA222C112A90048AA0C /* MenusStore.swift */,
+				9AA68EA222C112A90048AA0C /* PizzeriaStore.swift */,
 			);
 			path = Stores;
 			sourceTree = "<group>";
@@ -192,6 +200,10 @@
 			isa = PBXGroup;
 			children = (
 				9AFF784E22AC8FD60001E607 /* info.json */,
+				9AA1642E22C2C9BA00FD6AE4 /* classic_menu.json */,
+				9AA1643022C35E8500FD6AE4 /* white_menu.json */,
+				9AA1643222C35F3800FD6AE4 /* light_menu.json */,
+				9AA1643322C35F4800FD6AE4 /* special_menu.json */,
 				9AFF784622AC86210001E607 /* pizzeria_menus.json */,
 			);
 			path = JSON;
@@ -284,7 +296,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9AA1643122C35E9A00FD6AE4 /* white_menu.json in Resources */,
+				9AA1643522C35F5300FD6AE4 /* special_menu.json in Resources */,
 				9AFF784722AC86210001E607 /* pizzeria_menus.json in Resources */,
+				9AA1642F22C2CB5B00FD6AE4 /* classic_menu.json in Resources */,
+				9AA1643422C35F5300FD6AE4 /* light_menu.json in Resources */,
 				9A818DE922A2A5ED00E88290 /* LaunchScreen.storyboard in Resources */,
 				9AFF784F22AC91AC0001E607 /* info.json in Resources */,
 				9A818DE622A2A5ED00E88290 /* Assets.xcassets in Resources */,
@@ -346,7 +362,7 @@
 				9AFF785A22AD1C5D0001E607 /* InfoViewModel.swift in Sources */,
 				9AADCA4622AB256900EAFADB /* Pizzeria.swift in Sources */,
 				9AFF785622ACA2740001E607 /* UIColor+Custom.swift in Sources */,
-				9AA68EA322C112A90048AA0C /* MenusStore.swift in Sources */,
+				9AA68EA322C112A90048AA0C /* PizzeriaStore.swift in Sources */,
 				9AA68EA122C110150048AA0C /* MenusViewModel.swift in Sources */,
 				9AA68EA522C113F80048AA0C /* StoreStatus.swift in Sources */,
 				9AFF784322AC85930001E607 /* InfoTableViewController.swift in Sources */,

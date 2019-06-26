@@ -3,46 +3,55 @@ import WordPressFlux
 
 typealias MenuType = Menu.MenuType
 
-enum MenusStoreAction: Action {
-    case getMenus
-    case deleteMenu(type: Menu.MenuType)
+enum PizzeriaStoreAction: Action {
+    case reloadMenus
+    case deleteMenu(type: MenuType)
+    case reloadPizzas(type: MenuType)
 }
 
-enum MenusStoreQuery {
+enum PizzeriaStoreQuery {
     case getMenus
-    case deleteMenu(type: Menu.MenuType)
+    case getPizzas(type: MenuType)
 }
 
-struct MenusStoreState {
+struct PizzeriaStoreState {
     var menus: [Menu] = []
     var fetchingMenus: Bool = false
-    
     var deletingMenu = Set<MenuType>()
     
-    func isOperating() -> Bool {
+    var pizzas: [MenuType: [Pizza]] = [:]
+    var fetchingPizzas: [MenuType: Bool] = [:]
+    
+    func isOperatingMenu() -> Bool {
         return fetchingMenus ||
             !deletingMenu.isEmpty
     }
+    
+    func isOperatingPizzas() -> Bool{
+        return fetchingPizzas.first { $0.value }?.value ?? false
+    }
 }
 
-class MenusStore<Service: RemoteService>: QueryStore<MenusStoreState, MenusStoreQuery> {
+class PizzeriaStore<Service: RemoteService>: QueryStore<PizzeriaStoreState, PizzeriaStoreQuery> {
     private weak var service: Service?
     
     init(service: Service) {
         self.service = service
-        super.init(initialState: MenusStoreState())
+        super.init(initialState: PizzeriaStoreState())
     }
     
     override func onDispatch(_ action: Action) {
-        guard let action = action as? MenusStoreAction else {
+        guard let action = action as? PizzeriaStoreAction else {
             return
         }
         
         switch action {
-        case .getMenus:
+        case .reloadMenus:
             fetchMenus()
         case .deleteMenu(let type):
             deleteMenu(for: type)
+        case .reloadPizzas(let type):
+            fetchPizzas(for: type)
         }
     }
     
@@ -57,8 +66,8 @@ class MenusStore<Service: RemoteService>: QueryStore<MenusStoreState, MenusStore
             switch query {
             case .getMenus:
                 fetchMenus()
-            case .deleteMenu(let type):
-                deleteMenu(for: type)
+            case .getPizzas(let type):
+                fetchPizzas(for: type)
             }
         }
     }
@@ -74,9 +83,13 @@ class MenusStore<Service: RemoteService>: QueryStore<MenusStoreState, MenusStore
     func isDeletingMenu(for type: MenuType) -> Bool {
         return state.deletingMenu.contains(type)
     }
+    
+    func isFetchingPizzas(for type: MenuType) -> Bool {
+        return state.fetchingPizzas[type] ?? false
+    }
 }
 
-private extension MenusStore {
+private extension PizzeriaStore {
     func fetchMenus() {
         if state.fetchingMenus {
             return
@@ -103,6 +116,25 @@ private extension MenusStore {
 
         transaction {
             $0.deletingMenu.insert(type)
+        }
+    }
+    
+    func fetchPizzas(for type: MenuType) {
+        if isFetchingPizzas(for: type) {
+            return
+        }
+        
+        transaction {
+            $0.fetchingPizzas[type] = true
+        }
+        
+        service?.execute(.menu(type)) { [weak self] (result: Result<[Pizza], ServiceError>) in
+            DispatchQueue.main.async {
+                self?.transaction {
+                    $0.fetchingPizzas[type] = false
+                    $0.pizzas[type] = result.getSuccess() ?? []
+                }
+            }
         }
     }
 }

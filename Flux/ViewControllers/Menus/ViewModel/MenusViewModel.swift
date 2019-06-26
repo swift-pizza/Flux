@@ -15,7 +15,7 @@ class MenusViewModel<Service: RemoteService>: Observable {
     
     private var getMenusReceipt: Receipt?
     private var storeReceipt: Receipt?
-    private let store: MenusStore<Service>
+    private let store: PizzeriaStore<Service>
     private (set) var state: State = .stationary {
         didSet {
             self.emitChange()
@@ -23,9 +23,9 @@ class MenusViewModel<Service: RemoteService>: Observable {
     }
     
     init(service: Service) {
-        store = MenusStore(service: service)
+        store = PizzeriaStore(service: service)
         storeReceipt = store.onStateChange { [weak self] (_, state) in
-            self?.state = state.isOperating() ? .loading : .completed
+            self?.state = state.isOperatingMenu() ? .loading : .completed
         }
     }
     
@@ -34,6 +34,6 @@ class MenusViewModel<Service: RemoteService>: Observable {
     }
     
     func reloadMenus() {
-        store.onDispatch(MenusStoreAction.getMenus)
+        store.onDispatch(PizzeriaStoreAction.reloadMenus)
     }
 }

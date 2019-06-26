@@ -1,0 +1,22 @@
+[
+    {
+        "name": "Saporita",
+        "ingredients": "mozzarella, radicchio, gorgonzola, speck"
+    },
+    {
+        "name": "Bali",
+        "ingredients": "mozzarella, gamberetti, pomodorini, uova, rucola"
+    },
+    {
+        "name": "Bagus",
+        "ingredients": "mozzarella, prosciutto, funghi, wurstel, salamino piccante, grana, origano"
+    },
+    {
+        "name": "Genny",
+        "ingredients": "mozzarella, panna, sfilacci di cavallo"
+    },
+    {
+        "name": "Excalibur (arrotolata)",
+        "ingredients": "mozzarella, rucola, pomodoro fresco, brie"
+    }
+]
