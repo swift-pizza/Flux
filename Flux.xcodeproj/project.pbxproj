@@ -19,7 +19,7 @@
 		9AA68E9A22BD2F100048AA0C /* InfoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA68E9922BD2F100048AA0C /* InfoStore.swift */; };
 		9AA68EA122C110150048AA0C /* MenusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA68EA022C110150048AA0C /* MenusViewModel.swift */; };
 		9AA68EA322C112A90048AA0C /* PizzeriaStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA68EA222C112A90048AA0C /* PizzeriaStore.swift */; };
-		9AA68EA522C113F80048AA0C /* StoreStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA68EA422C113F80048AA0C /* StoreStatus.swift */; };
+		9AA68EA522C113F80048AA0C /* FetchingStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA68EA422C113F80048AA0C /* FetchingStatus.swift */; };
 		9AADCA4622AB256900EAFADB /* Pizzeria.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AADCA4522AB256900EAFADB /* Pizzeria.swift */; };
 		9AADCA4922AB278A00EAFADB /* PizzeriaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AADCA4822AB278A00EAFADB /* PizzeriaService.swift */; };
 		9AFF784322AC85930001E607 /* InfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AFF784222AC85930001E607 /* InfoTableViewController.swift */; };
@@ -50,7 +50,7 @@
 		9AA68E9922BD2F100048AA0C /* InfoStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoStore.swift; sourceTree = "<group>"; };
 		9AA68EA022C110150048AA0C /* MenusViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenusViewModel.swift; sourceTree = "<group>"; };
 		9AA68EA222C112A90048AA0C /* PizzeriaStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzeriaStore.swift; sourceTree = "<group>"; };
-		9AA68EA422C113F80048AA0C /* StoreStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreStatus.swift; sourceTree = "<group>"; };
+		9AA68EA422C113F80048AA0C /* FetchingStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchingStatus.swift; sourceTree = "<group>"; };
 		9AADCA4522AB256900EAFADB /* Pizzeria.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pizzeria.swift; sourceTree = "<group>"; };
 		9AADCA4822AB278A00EAFADB /* PizzeriaService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzeriaService.swift; sourceTree = "<group>"; };
 		9AFF784222AC85930001E607 /* InfoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewController.swift; sourceTree = "<group>"; };
@@ -135,7 +135,7 @@
 		9AA68E9822BD2EF10048AA0C /* Stores */ = {
 			isa = PBXGroup;
 			children = (
-				9AA68EA422C113F80048AA0C /* StoreStatus.swift */,
+				9AA68EA422C113F80048AA0C /* FetchingStatus.swift */,
 				9AA68E9922BD2F100048AA0C /* InfoStore.swift */,
 				9AA68EA222C112A90048AA0C /* PizzeriaStore.swift */,
 			);
@@ -364,7 +364,7 @@
 				9AFF785622ACA2740001E607 /* UIColor+Custom.swift in Sources */,
 				9AA68EA322C112A90048AA0C /* PizzeriaStore.swift in Sources */,
 				9AA68EA122C110150048AA0C /* MenusViewModel.swift in Sources */,
-				9AA68EA522C113F80048AA0C /* StoreStatus.swift in Sources */,
+				9AA68EA522C113F80048AA0C /* FetchingStatus.swift in Sources */,
 				9AFF784322AC85930001E607 /* InfoTableViewController.swift in Sources */,
 				9A818DE122A2A5EC00E88290 /* MenusViewController.swift in Sources */,
 				9A818DDF22A2A5EC00E88290 /* AppDelegate.swift in Sources */,

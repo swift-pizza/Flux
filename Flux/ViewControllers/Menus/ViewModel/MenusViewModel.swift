@@ -5,7 +5,7 @@ class MenusViewModel<Service: RemoteService>: Observable {
     enum State {
         case stationary
         case loading
-        case completed
+        case completed(error: ServiceError?)
     }
 
     var changeDispatcher: Dispatcher<Void> = Dispatcher()
@@ -24,8 +24,8 @@ class MenusViewModel<Service: RemoteService>: Observable {
     
     init(service: Service) {
         store = PizzeriaStore(service: service)
-        storeReceipt = store.onStateChange { [weak self] (_, state) in
-            self?.state = state.isOperatingMenu() ? .loading : .completed
+        storeReceipt = store.onChange { [weak self] in
+            self?.updateState()
         }
     }
     
@@ -35,5 +35,18 @@ class MenusViewModel<Service: RemoteService>: Observable {
     
     func reloadMenus() {
         store.onDispatch(PizzeriaStoreAction.reloadMenus)
+    }
+}
+
+private extension MenusViewModel {
+    func updateState() {
+        switch store.fetchingMenusStatus() {
+        case .stationary:
+            state = .stationary
+        case .fetching:
+            state = .loading
+        case .fetchingCompleted(let error):
+            state = .completed(error: error)
+        }
     }
 }

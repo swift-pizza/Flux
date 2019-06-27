@@ -2,7 +2,7 @@ import UIKit
 import WordPressFlux
 
 class MenusViewController: UITableViewController {
-    private let service = PizzeriaService(.local)
+    private let service = PizzeriaService(Constants.environment)
     
     private var receipt: Receipt!
     private var viewModel: MenusViewModel<PizzeriaService>!

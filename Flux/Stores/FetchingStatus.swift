@@ -1,11 +1,11 @@
 import Foundation
 
-enum StoreStatus: Equatable {
+enum FetchingStatus: Equatable {
     case stationary
     case fetching
     case fetchingCompleted(error: ServiceError?)
     
-    static func == (lhs: StoreStatus, rhs: StoreStatus) -> Bool {
+    static func == (lhs: FetchingStatus, rhs: FetchingStatus) -> Bool {
         switch (lhs, rhs) {
         case (.stationary, .stationary):
             return true
@@ -16,5 +16,9 @@ enum StoreStatus: Equatable {
         default:
             return false
         }
+    }
+
+    func isFetching() -> Bool {
+        return self == .fetching
     }
 }

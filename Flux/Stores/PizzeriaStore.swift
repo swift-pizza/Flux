@@ -5,7 +5,6 @@ typealias MenuType = Menu.MenuType
 
 enum PizzeriaStoreAction: Action {
     case reloadMenus
-    case deleteMenu(type: MenuType)
     case reloadPizzas(type: MenuType)
 }
 
@@ -16,20 +15,10 @@ enum PizzeriaStoreQuery {
 
 struct PizzeriaStoreState {
     var menus: [Menu] = []
-    var fetchingMenus: Bool = false
-    var deletingMenu = Set<MenuType>()
-    
+    var fetchingMenus: FetchingStatus = .stationary
+
     var pizzas: [MenuType: [Pizza]] = [:]
-    var fetchingPizzas: [MenuType: Bool] = [:]
-    
-    func isOperatingMenu() -> Bool {
-        return fetchingMenus ||
-            !deletingMenu.isEmpty
-    }
-    
-    func isOperatingPizzas() -> Bool{
-        return fetchingPizzas.first { $0.value }?.value ?? false
-    }
+    var fetchingPizzas: [MenuType: FetchingStatus] = [:]
 }
 
 class PizzeriaStore<Service: RemoteService>: QueryStore<PizzeriaStoreState, PizzeriaStoreQuery> {
@@ -48,8 +37,6 @@ class PizzeriaStore<Service: RemoteService>: QueryStore<PizzeriaStoreState, Pizz
         switch action {
         case .reloadMenus:
             fetchMenus()
-        case .deleteMenu(let type):
-            deleteMenu(for: type)
         case .reloadPizzas(let type):
             fetchPizzas(for: type)
         }
@@ -76,62 +63,48 @@ class PizzeriaStore<Service: RemoteService>: QueryStore<PizzeriaStoreState, Pizz
         return state.menus
     }
     
-    func isFetchingMenus() -> Bool {
+    func fetchingMenusStatus() -> FetchingStatus {
         return state.fetchingMenus
     }
     
-    func isDeletingMenu(for type: MenuType) -> Bool {
-        return state.deletingMenu.contains(type)
-    }
-    
-    func isFetchingPizzas(for type: MenuType) -> Bool {
-        return state.fetchingPizzas[type] ?? false
+    func fetchingPizzasStatus(for type: MenuType) -> FetchingStatus {
+        return state.fetchingPizzas[type] ?? .stationary
     }
 }
 
 private extension PizzeriaStore {
     func fetchMenus() {
-        if state.fetchingMenus {
+        if fetchingMenusStatus().isFetching() {
             return
         }
         
         transaction {
-            $0.fetchingMenus = true
+            $0.fetchingMenus = .fetching
         }
         
         service?.execute(.menus) { [weak self] (result: Result<Pizzeria, ServiceError>) in
             DispatchQueue.main.async {
                 self?.transaction {
-                    $0.fetchingMenus = false
+                    $0.fetchingMenus = .fetchingCompleted(error: result.getError())
                     $0.menus = result.getSuccess()?.menus ?? []
                 }
             }
         }
     }
     
-    func deleteMenu(for type: MenuType) {
-        if isDeletingMenu(for: type) {
-            return
-        }
-
-        transaction {
-            $0.deletingMenu.insert(type)
-        }
-    }
-    
     func fetchPizzas(for type: MenuType) {
-        if isFetchingPizzas(for: type) {
+        if fetchingPizzasStatus(for: type).isFetching() {
             return
         }
         
         transaction {
-            $0.fetchingPizzas[type] = true
+            $0.fetchingPizzas[type] = .fetching
         }
         
         service?.execute(.menu(type)) { [weak self] (result: Result<[Pizza], ServiceError>) in
             DispatchQueue.main.async {
                 self?.transaction {
-                    $0.fetchingPizzas[type] = false
+                    $0.fetchingPizzas[type] = .fetchingCompleted(error: result.getError())
                     $0.pizzas[type] = result.getSuccess() ?? []
                 }
             }

@@ -6,7 +6,7 @@ enum InfoStoreAction: Action {
 }
 
 struct InfoStoreState {
-    var status: StoreStatus = .stationary
+    var status: FetchingStatus = .stationary
     var sections: [InfoSection] = []
 }
 
@@ -17,7 +17,7 @@ class InfoStore<Service: RemoteService>: StatefulStore<InfoStoreState> {
         self.service = service
         super.init(initialState: InfoStoreState())
     }
-    
+
     override func onDispatch(_ action: Action) {
         guard let action = action as? InfoStoreAction else {
             return
