@@ -21,8 +21,8 @@ class InfoViewModel<Service: RemoteService>: Observable {
         }
     }
     
-    init(service: Service) {
-        store = InfoStore(service: service)
+    init(store: InfoStore<Service>) {
+        self.store = store
         storeReceipt = store.onStateChange { [weak self] (_, state) in
             switch state.status {
             case .stationary:

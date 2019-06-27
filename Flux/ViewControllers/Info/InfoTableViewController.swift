@@ -4,6 +4,7 @@ import WordPressFlux
 
 class InfoTableViewController: UITableViewController {
     private let service = PizzeriaService(Constants.environment)
+    private var store: InfoStore<PizzeriaService>!
 
     private var receipt: Receipt!
     private var viewModel: InfoViewModel<PizzeriaService>!
@@ -65,7 +66,8 @@ private extension InfoTableViewController {
     }
     
     func setViewModel() {
-        viewModel = InfoViewModel(service: service)
+        store = InfoStore(service: service)
+        viewModel = InfoViewModel(store: store)
         receipt = viewModel.onChange { [unowned self] in
             self.updateView()
         }
