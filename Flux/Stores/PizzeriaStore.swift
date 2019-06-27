@@ -63,6 +63,10 @@ class PizzeriaStore<Service: RemoteService>: QueryStore<PizzeriaStoreState, Pizz
         return state.menus
     }
     
+    func getPizzas(for type: MenuType) -> [Pizza] {
+        return state.pizzas[type] ?? []
+    }
+    
     func fetchingMenusStatus() -> FetchingStatus {
         return state.fetchingMenus
     }

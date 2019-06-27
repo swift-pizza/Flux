@@ -16,6 +16,8 @@
 		9AA1643122C35E9A00FD6AE4 /* white_menu.json in Resources */ = {isa = PBXBuildFile; fileRef = 9AA1643022C35E8500FD6AE4 /* white_menu.json */; };
 		9AA1643422C35F5300FD6AE4 /* light_menu.json in Resources */ = {isa = PBXBuildFile; fileRef = 9AA1643222C35F3800FD6AE4 /* light_menu.json */; };
 		9AA1643522C35F5300FD6AE4 /* special_menu.json in Resources */ = {isa = PBXBuildFile; fileRef = 9AA1643322C35F4800FD6AE4 /* special_menu.json */; };
+		9AA1644322C50FE900FD6AE4 /* PizzasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA1644222C50FE900FD6AE4 /* PizzasViewController.swift */; };
+		9AA1644622C51C2300FD6AE4 /* PizzasViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA1644522C51C2300FD6AE4 /* PizzasViewModel.swift */; };
 		9AA68E9A22BD2F100048AA0C /* InfoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA68E9922BD2F100048AA0C /* InfoStore.swift */; };
 		9AA68EA122C110150048AA0C /* MenusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA68EA022C110150048AA0C /* MenusViewModel.swift */; };
 		9AA68EA322C112A90048AA0C /* PizzeriaStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA68EA222C112A90048AA0C /* PizzeriaStore.swift */; };
@@ -47,6 +49,8 @@
 		9AA1643022C35E8500FD6AE4 /* white_menu.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = white_menu.json; sourceTree = "<group>"; };
 		9AA1643222C35F3800FD6AE4 /* light_menu.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = light_menu.json; sourceTree = "<group>"; };
 		9AA1643322C35F4800FD6AE4 /* special_menu.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = special_menu.json; sourceTree = "<group>"; };
+		9AA1644222C50FE900FD6AE4 /* PizzasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzasViewController.swift; sourceTree = "<group>"; };
+		9AA1644522C51C2300FD6AE4 /* PizzasViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzasViewModel.swift; sourceTree = "<group>"; };
 		9AA68E9922BD2F100048AA0C /* InfoStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoStore.swift; sourceTree = "<group>"; };
 		9AA68EA022C110150048AA0C /* MenusViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenusViewModel.swift; sourceTree = "<group>"; };
 		9AA68EA222C112A90048AA0C /* PizzeriaStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzeriaStore.swift; sourceTree = "<group>"; };
@@ -132,6 +136,23 @@
 			path = Flux;
 			sourceTree = "<group>";
 		};
+		9AA1644122C50FCD00FD6AE4 /* Pizzas */ = {
+			isa = PBXGroup;
+			children = (
+				9AA1644222C50FE900FD6AE4 /* PizzasViewController.swift */,
+				9AA1644422C51C0E00FD6AE4 /* ViewModel */,
+			);
+			path = Pizzas;
+			sourceTree = "<group>";
+		};
+		9AA1644422C51C0E00FD6AE4 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9AA1644522C51C2300FD6AE4 /* PizzasViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		9AA68E9822BD2EF10048AA0C /* Stores */ = {
 			isa = PBXGroup;
 			children = (
@@ -172,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				9AA68E9B22BD59440048AA0C /* Menus */,
+				9AA1644122C50FCD00FD6AE4 /* Pizzas */,
 				9AFF785722AD1C290001E607 /* Info */,
 			);
 			path = ViewControllers;
@@ -361,6 +383,7 @@
 				9AFF784D22AC8F740001E607 /* Info.swift in Sources */,
 				9AFF785A22AD1C5D0001E607 /* InfoViewModel.swift in Sources */,
 				9AADCA4622AB256900EAFADB /* Pizzeria.swift in Sources */,
+				9AA1644322C50FE900FD6AE4 /* PizzasViewController.swift in Sources */,
 				9AFF785622ACA2740001E607 /* UIColor+Custom.swift in Sources */,
 				9AA68EA322C112A90048AA0C /* PizzeriaStore.swift in Sources */,
 				9AA68EA122C110150048AA0C /* MenusViewModel.swift in Sources */,
@@ -373,6 +396,7 @@
 				9AA68E9A22BD2F100048AA0C /* InfoStore.swift in Sources */,
 				9AFF785322ACA0E10001E607 /* UITableView+Helpers.swift in Sources */,
 				9AFF785122AC9D190001E607 /* Constants.swift in Sources */,
+				9AA1644622C51C2300FD6AE4 /* PizzasViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

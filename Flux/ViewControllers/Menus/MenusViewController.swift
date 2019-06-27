@@ -3,7 +3,7 @@ import WordPressFlux
 
 class MenusViewController: UITableViewController {
     private let service = PizzeriaService(Constants.environment)
-    
+    private var store: PizzeriaStore<PizzeriaService>!
     private var receipt: Receipt!
     private var viewModel: MenusViewModel<PizzeriaService>!
 
@@ -26,7 +26,8 @@ private extension MenusViewController {
     }
 
     func setViewModel() {
-        viewModel = MenusViewModel(service: service)
+        store = PizzeriaStore(service: service)
+        viewModel = MenusViewModel(store: store)
         receipt = viewModel.onChange { [unowned self] in
             self.updateView()
         }
@@ -71,5 +72,14 @@ extension MenusViewController {
         let cell: UITableViewCell = tableView.dequeue(cellAt: indexPath, for: Constants.Cells.Identifiers.menu)
         cell.textLabel?.text = viewModel.menus[indexPath.section].title
         return cell
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let cell = sender as? UITableViewCell,
+            let section = tableView.indexPath(for: cell)?.section,
+            let vc = segue.destination as? PizzasViewController {
+            vc.store = store
+            vc.menu = viewModel.menus[section]
+        }
     }
 }

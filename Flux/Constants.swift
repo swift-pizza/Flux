@@ -7,6 +7,7 @@ enum Constants {
         enum Identifiers {
             static let menu = "MenuCell"
             static let info = "InfoCell"
+            static let pizza = "PizzaCell"
         }
         
         static let height = CGFloat(60.0)
