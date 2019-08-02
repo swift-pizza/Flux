@@ -25,7 +25,7 @@ class InfoViewModel<Service: RemoteService>: Observable {
         self.store = store
         storeReceipt = store.onStateChange { [weak self] (_, state) in
             switch state.status {
-            case .stationary:
+            case .idle:
                 self?.state = .stationary
             case .fetching:
                 self?.state = .loading

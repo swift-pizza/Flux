@@ -2,19 +2,13 @@ import Foundation
 import WordPressFlux
 
 class PizzasViewModel<Service: RemoteService>: Observable {
-    enum State {
-        case stationary
-        case loading
-        case completed(error: ServiceError?)
-    }
-    
     let menuType: MenuType
     var changeDispatcher: Dispatcher<Void> = Dispatcher()
     
     private var getPizzasReceipt: Receipt?
     private var storeReceipt: Receipt?
     private let store: PizzeriaStore<Service>
-    private (set) var state: State = .stationary {
+    private (set) var state: FetchingStatus = .idle {
         didSet {
             self.emitChange()
         }
@@ -43,13 +37,6 @@ class PizzasViewModel<Service: RemoteService>: Observable {
 
 private extension PizzasViewModel {
     func updateState() {
-        switch store.fetchingPizzasStatus(for: menuType) {
-        case .stationary:
-            state = .stationary
-        case .fetching:
-            state = .loading
-        case .fetchingCompleted(let error):
-            state = .completed(error: error)
-        }
+        state = store.fetchingPizzasStatus(for: menuType)
     }
 }
