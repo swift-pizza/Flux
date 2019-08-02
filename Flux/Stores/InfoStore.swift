@@ -6,7 +6,7 @@ enum InfoStoreAction: Action {
 }
 
 struct InfoStoreState {
-    var status: FetchingStatus = .stationary
+    var status: FetchingStatus = .idle
     var sections: [InfoSection] = []
 }
 

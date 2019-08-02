@@ -15,7 +15,7 @@ enum PizzeriaStoreQuery {
 
 struct PizzeriaStoreState {
     var menus: [Menu] = []
-    var fetchingMenus: FetchingStatus = .stationary
+    var fetchingMenus: FetchingStatus = .idle
 
     var pizzas: [MenuType: [Pizza]] = [:]
     var fetchingPizzas: [MenuType: FetchingStatus] = [:]
@@ -67,18 +67,26 @@ class PizzeriaStore<Service: RemoteService>: QueryStore<PizzeriaStoreState, Pizz
         return state.pizzas[type] ?? []
     }
     
+    func isFetchingMenus() -> Bool {
+        return fetchingMenusStatus() == .fetching
+    }
+
+    func isFetchingPizzas(for type: MenuType) -> Bool {
+        return fetchingPizzasStatus(for: type) == .fetching
+    }
+
     func fetchingMenusStatus() -> FetchingStatus {
         return state.fetchingMenus
     }
     
     func fetchingPizzasStatus(for type: MenuType) -> FetchingStatus {
-        return state.fetchingPizzas[type] ?? .stationary
+        return state.fetchingPizzas[type] ?? .idle
     }
 }
 
 private extension PizzeriaStore {
     func fetchMenus() {
-        if fetchingMenusStatus().isFetching() {
+        if isFetchingMenus() {
             return
         }
         
@@ -97,7 +105,7 @@ private extension PizzeriaStore {
     }
     
     func fetchPizzas(for type: MenuType) {
-        if fetchingPizzasStatus(for: type).isFetching() {
+        if isFetchingPizzas(for: type) {
             return
         }
         
