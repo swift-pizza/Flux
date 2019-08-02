@@ -17,7 +17,7 @@ enum Request {
     }
 }
 
-enum ServiceError: Error {
+enum ServiceError: Error, Equatable {
     case general
     case custom(title: String?, description: String?, code: Int)
 }
