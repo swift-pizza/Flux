@@ -77,9 +77,9 @@ private extension InfoTableViewController {
     func updateView() {
         DispatchQueue.main.async {
             switch self.viewModel.state {
-            case .loading, .stationary:
+            case .fetching, .idle:
                 self.tableView.beginRefreshing()
-            case .completed:
+            case .fetchingCompleted:
                 self.tableView.endRefreshing()
                 self.tableView.reloadData()
             }

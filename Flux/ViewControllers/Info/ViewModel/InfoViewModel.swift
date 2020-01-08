@@ -2,12 +2,6 @@ import Foundation
 import WordPressFlux
 
 class InfoViewModel<Service: RemoteService>: Observable {
-    enum State {
-        case stationary
-        case loading
-        case completed(Bool)
-    }
-
     var changeDispatcher: Dispatcher<Void> = Dispatcher()
     var sections: [InfoSection] {
         return store.getSections()
@@ -15,7 +9,7 @@ class InfoViewModel<Service: RemoteService>: Observable {
 
     private var storeReceipt: Receipt?
     private let store: InfoStore<Service>
-    private (set) var state: State = .stationary {
+    private (set) var state: FetchingStatus = .idle {
         didSet {
             self.emitChange()
         }
@@ -24,14 +18,7 @@ class InfoViewModel<Service: RemoteService>: Observable {
     init(store: InfoStore<Service>) {
         self.store = store
         storeReceipt = store.onStateChange { [weak self] (_, state) in
-            switch state.status {
-            case .idle:
-                self?.state = .stationary
-            case .fetching:
-                self?.state = .loading
-            case .fetchingCompleted(let error):
-                self?.state = .completed(error == nil)
-            }
+            self?.state = state.status
         }
     }
     
